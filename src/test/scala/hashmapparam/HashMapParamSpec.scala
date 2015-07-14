@@ -13,7 +13,7 @@ class HashMapParamSpec extends FlatSpec with Matchers with BeforeAndAfter with S
   private var accumulator2: Accumulable[MutableHashMap[Foo, Double], (Foo, Double)] = _
 
   before {
-	  accumulator = sc.accumulable(MutableHashMap.empty[String, Int])(new HashMapParam)
+    accumulator = sc.accumulable(MutableHashMap.empty[String, Int])(new HashMapParam)
     accumulator2 = sc.accumulable(MutableHashMap.empty[Foo, Double])(new HashMapParam)
   }
 
@@ -21,7 +21,7 @@ class HashMapParamSpec extends FlatSpec with Matchers with BeforeAndAfter with S
     accumulator.value shouldBe MutableHashMap()
 
     accumulator += ("a" -> 1)
- 	accumulator += ("b" -> 2)
+    accumulator += ("b" -> 2)
 
     accumulator.value shouldBe MutableHashMap("a" -> 1, "b" -> 2)
   }
@@ -30,7 +30,7 @@ class HashMapParamSpec extends FlatSpec with Matchers with BeforeAndAfter with S
     accumulator2.value shouldBe MutableHashMap()
 
     accumulator2 += (Foo("a") -> 42)
- 	  accumulator2 += (Foo("b") -> 3.14)
+    accumulator2 += (Foo("b") -> 3.14)
     accumulator2 += (Foo("a") -> 1.98)
 
     accumulator2.value shouldBe MutableHashMap(Foo("a") -> 43.98, Foo("b") -> 3.14)
